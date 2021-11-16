@@ -9,7 +9,9 @@ describe("😺Gatetes en Javascript😺", () => {
         // Hemos creado un objeto que representa
         // a un gatete, pero tenemos que ponerle nombre.
         
-        let cat = {};
+        let cat = {
+            name: "Sprinkles"
+        };
 
 
         expect(cat.name).to.equal("Sprinkles");
@@ -19,6 +21,15 @@ describe("😺Gatetes en Javascript😺", () => {
 
         // fíjate en los expect y crea los objetos
         // con todos sus atributos
+
+        let garfield = {
+            name: "Garfield",
+            favouriteFood: "Lasaña"
+        };
+
+        let princess = {
+            name: "Lady Princess"
+        };
 
 
         expect(garfield.name).to.equal("Garfield");
@@ -30,8 +41,21 @@ describe("😺Gatetes en Javascript😺", () => {
         // Los objetos pueden tambien tener funciones dentro,
         // cuando una función está dentro de un objeto la llamamos 'método'.
         // Modifica los objetos añadiendo los métodos que faltan.
-        let garfield = {};
-        let princess = {};
+        let garfield = {
+            sayHello() {
+                return "Hello, Jon";
+            }
+        };
+
+        let princess = {
+            purr() {
+                return "Purrrr";
+            },
+            talk() {
+                return "❤️";
+            }
+        };
+
         
         expect(garfield.sayHello()).to.equal("Hello, Jon");
         expect(princess.purr()).to.equal("Purrrr");
@@ -51,9 +75,28 @@ describe("🐸 Salto de la rana", () => {
 
     //////////////
 
-    // class Frog {
-    // 
-    // }
+    class Frog {
+        constructor() {
+            this.position = 0;
+        }
+
+        getPosition() {
+            return this.position;
+        }
+
+        jump() {
+            this.position = this.position + 3;
+
+            if (this.position > 20) {
+                this.position = 20;
+            }
+            
+        }
+
+        goHome() {
+            this.position = 0;
+        }
+    }
 
     ///////////////
 
@@ -61,7 +104,7 @@ describe("🐸 Salto de la rana", () => {
         let frog = new Frog(); 
 
         expect(frog.getPosition()).to.equal(0);
-    })
+    });
 
     it("La rana avanza 3 posiciones al saltar", () => {
         let frog = new Frog(); 
@@ -69,7 +112,7 @@ describe("🐸 Salto de la rana", () => {
         frog.jump();
 
         expect(frog.getPosition()).to.equal(3);
-    })
+    });
 
     it("La rana puede saltar varias veces, avanzando su posición", () => {
         let frog = new Frog(); 
@@ -79,7 +122,7 @@ describe("🐸 Salto de la rana", () => {
         frog.jump();
 
         expect(frog.getPosition()).to.equal(9);
-    })
+    });
 
     it("No se puede avanzar más allá de la posición 20, donde hay una pared", () => {
         let frog = new Frog(); 
@@ -93,5 +136,13 @@ describe("🐸 Salto de la rana", () => {
         frog.jump();
 
         expect(frog.getPosition()).to.equal(20);
-    })
-})
+    });
+
+    it("La rana puede volver a la posición inicial", () => {
+        let frog = new Frog();
+
+        frog.jump();
+        frog.jump();
+
+    });
+});
